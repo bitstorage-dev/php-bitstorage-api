@@ -1,0 +1,22 @@
+{
+  "name": "bitstorage-dev/php-bitstorage-api",
+  "description": "PHP BitStorage API is PHP library for the BitStorage API designed to be easy to use.",
+  "keywords": ["BitStorage","cryptocurrency"],
+  "license": "MIT",
+  "repositories": [ {
+    "type": "vcs",
+    "url": "https://github.com/bitstorage-dev/php-bitstorage-api"
+  }],
+  "require": {
+    "php": ">=7.0",
+    "ext-curl": "*"
+  },
+  "config": {
+    "optimize-autoloader": true
+  },
+  "autoload": {
+        "psr-4": {
+            "BitStorage\\" : "src/"
+        }
+    }
+}
