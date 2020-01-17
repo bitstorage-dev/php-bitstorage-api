@@ -4,7 +4,7 @@ This project will allow you to create your own projects for interaction with the
 
 #### Installation
 ```
-git clone https://github.com/virtual-avatar/BitStorage.git .
+git clone https://github.com/bitstorage-dev/php-bitstorage-api.git .
 composer update
 ```
 
@@ -25,7 +25,7 @@ php composer.phar update
 ```
 
 #### Windows:
-[Download installer for Windows](https://github.com/virtual-avatar/BitStorage/#installing-on-windows)
+[Download installer for Windows](https://github.com/bitstorage-dev/php-bitstorage-api/#installing-on-windows)
 
 </details>
 
@@ -1037,7 +1037,7 @@ Download and install composer:
 2. Create a folder on your drive like C:\BitStorage
 3. Run command prompt and type `cd C:\BitStorage`
 4. ```
-   git clone https://github.com/virtual-avatar/BitStorage.git .
+   git clone https://github.com/bitstorage-dev/php-bitstorage-api .
    composer update
    ```
 5. Once complete copy the vendor folder into your project.
