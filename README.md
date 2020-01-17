@@ -1,4 +1,4 @@
-# BitStorage
+# PHP BitStorage API
 
 This project will allow you to create your own projects for interaction with the exchange [BitStorage](https://bitstorage.finance/api-docs).
 
