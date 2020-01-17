@@ -4,6 +4,10 @@ This project will allow you to create your own projects for interaction with the
 
 #### Installation
 ```
+composer require "bitstorage-dev/php-bitstorage-api @dev"
+```
+OR
+```
 git clone https://github.com/bitstorage-dev/php-bitstorage-api.git .
 composer update
 ```
@@ -1037,6 +1041,10 @@ Download and install composer:
 2. Create a folder on your drive like C:\BitStorage
 3. Run command prompt and type `cd C:\BitStorage`
 4. ```
+   composer require "bitstorage-dev/php-bitstorage-api @dev"
+   ```
+   OR
+   ```
    git clone https://github.com/bitstorage-dev/php-bitstorage-api .
    composer update
    ```
