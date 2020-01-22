@@ -272,6 +272,9 @@ class BitStorageApi
      * -amount : The amount of base currency to buy or sell.
      * -orders : This parameter is used only if you intend to place multiple orders in one API request
      *
+     * -orders : is array [['side'=> '','type'=> '','currency' => '','market' => '', 'limit_price' => '', 'stop_price' => '', 'amount' => ''],[...],...]
+     *
+     * $orders = null;
      * $side = 'buy';
      * $type = 'limit';
      * $currency = 'BTC';
@@ -280,8 +283,9 @@ class BitStorageApi
      * $stop_price = 0;
      * $limit_price = 0.00000027;
      * $api = new BitStorageApi();
-     * $api->ordersNew($side, $type, $currency, $market, $limit_price, $stop_price, $amount);
+     * $api->ordersNew($orders,$side, $type, $currency, $market, $limit_price, $stop_price, $amount);
      *
+     * @param array $orders
      * @param string $side
      * @param string $type
      * @param string $currency
@@ -289,25 +293,27 @@ class BitStorageApi
      * @param float $limit_price
      * @param float $stop_price
      * @param float $amount
-     * @param array $orders
      * @return array|mixed
      * @throws Exception
      */
-    public function ordersNew(string $side, string $type, string $currency, string $market, float $limit_price, float  $stop_price, float $amount, array $orders = null)
+    public function ordersNew(array $orders = null, string $side = null, string $type = null, string $currency = null, string $market = null, float $limit_price = null, float  $stop_price = null, float $amount = null)
     {
-        $params = [
-            'wapi' => true,
-            'side' => $side,
-            'type' => $type,
-            'currency' => $currency,
-            'market' => $market,
-            'limit_price' => $limit_price,
-            'stop_price' => $stop_price,
-            'amount' => $amount,
-            'orders' => $orders
-        ];
-        if($orders['orders'] == null) {
-            unset($orders['orders']);
+        if(is_null($orders)) {
+            $params = [
+                'wapi' => true,
+                'side' => $side,
+                'type' => $type,
+                'currency' => $currency,
+                'market' => $market,
+                'limit_price' => $limit_price,
+                'stop_price' => $stop_price,
+                'amount' => $amount
+            ];
+        } else {
+            $params = [
+                'wapi' => true,
+                'orders' => json_encode($orders)
+            ];
         }
         return $this->httpRequest('orders/new',"POST",$params,true);
     }
@@ -322,40 +328,46 @@ class BitStorageApi
      * -amount : The amount of base currency to buy or sell
      * -orders : This parameter is used only if you intend to edit multiple orders in one API request
      *
+     * -orders : is array [['id'=> '', 'type' => '', 'amount' => '', 'stop_price' => '', 'limit_price' => ''],[...],...]
+     *
+     * $orders = null;
      * $id = 642741;
      * $type = 'limit';
      * $amount = 15;
      * $stop_price = 0;
      * $limit_price = 0.00000027;
      * $api = new BitStorageApi();
-     * $api->ordersEdit( $id, $type, $limit_price, $stop_price, $amount)
+     * $api->ordersEdit($orders, $id, $type, $limit_price, $stop_price, $amount)
      *
+     * @param array $orders
      * @param int $id
      * @param string $type
      * @param float $limit_price
      * @param float $stop_price
      * @param float $amount
-     * @param array $orders
      * @return array|mixed
      * @throws Exception
      */
-    public function ordersEdit( int $id, string $type,float $limit_price, float $stop_price, float $amount, array $orders = null)
+    public function ordersEdit(array $orders = null, int $id = null, string $type = null, float $limit_price = null, float $stop_price = null, float $amount = null)
     {
-        $params = [
-            'wapi' => true,
-            'id' => $id,
-            'type' => $type,
-            'limit_price' => $limit_price,
-            'stop_price' => $stop_price,
-            'amount' => $amount,
-            'orders' => $orders
-        ];
-        if($orders['orders'] == null) {
-            unset($orders['orders']);
+        if(is_null($orders)) {
+            $params = [
+                'wapi' => true,
+                'id' => $id,
+                'type' => $type,
+                'limit_price' => $limit_price,
+                'stop_price' => $stop_price,
+                'amount' => $amount
+            ];
+        } else {
+            $params = [
+                'wapi' => true,
+                'orders' => json_encode($orders)
+            ];
         }
+
         return $this->httpRequest('orders/edit',"POST",$params,true);
     }
-
     /***
      * Get a list of the account's existing addresses for receiving Crypto currency.
      *
