@@ -864,6 +864,7 @@ Array
 
 #### Place One (or Many) New Orders
 ```php
+$orders = null;
 $side = 'buy';
 $type = 'limit';
 $currency = 'BTC';
@@ -871,7 +872,7 @@ $market = 'DOGE';
 $amount = 15;
 $stop_price = 0;
 $limit_price = 0.00000027;
-$orderNew = $api->ordersNew($side, $type, $currency, $market, $limit_price, $stop_price, $amount);
+$orderNew = $api->ordersNew($orders,$side, $type, $currency, $market, $limit_price, $stop_price, $amount);
 print_r($orderNew);
 ```
 <details>
@@ -911,12 +912,13 @@ Array
 
 #### Edit One (or Many) Orders
 ```php
+$orders = null;
 $id = 6316659;
 $type = 'limit';
 $amount = 15;
 $stop_price = 0;
 $limit_price = 0.00000027;
-$orderEdit = $api->ordersEdit( $id, $type, $limit_price, $stop_price, $amount)
+$orderEdit = $api->ordersEdit($orders, $id, $type, $limit_price, $stop_price, $amount)
 print_r($orderEdit);
 ```
 <details>
